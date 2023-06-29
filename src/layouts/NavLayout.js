@@ -1,22 +1,17 @@
 import { Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 export default function NavLayout(props){
     return (
         <Nav variant="pills" activeKey="1">
             <Nav.Item>
-                <Nav.Link eventKey="1" href="/">
-                Home
-                </Nav.Link>
+                <NavLink to="/" className="nav-link">Home</NavLink>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="2" href="/category">
-                Category
-                </Nav.Link>
+                <NavLink to="/category" className="nav-link">Category</NavLink>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link eventKey="3" href="/product">
-                Product
-                </Nav.Link>
+                <NavLink to="/product" className="nav-link">Product</NavLink>
             </Nav.Item>
         </Nav>
     );
