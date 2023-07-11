@@ -5,6 +5,7 @@ import { detailProduct } from "../services/product.service";
 function ProductDetailPage(){
     const {id} = useParams("id");
     const [product,setProduct] = useState({});
+    const [count,setCount] = useState(0);
 
     const find = async ()=>{
         const p = await detailProduct(id);
@@ -15,6 +16,19 @@ function ProductDetailPage(){
         // call api -> set data product
         find();
     },[]); // component did mount
+
+    useEffect(()=>{
+        console.log("Count change");
+    },[count]);
+
+    useEffect(()=>{
+        console.log("Product change");
+    },[product]); // did update cua product
+
+    useEffect(()=>{
+        console.log("Product - Count change");
+    },[product,count]); // did update cua product - count
+
 
     return (
         <div>
