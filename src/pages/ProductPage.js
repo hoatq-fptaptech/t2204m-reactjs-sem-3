@@ -1,33 +1,19 @@
 import React from "react";
 import { Col, Row} from "react-bootstrap";
 import ProductGrid from "../components/productgrid";
-import axios from "axios";
+// import axios from "axios";
+// import api from "../services/api";
+import { getProduct } from "../services/product.service";
 export default class ProductPage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             products:[]
-        }
-      
+        } 
     }
-    componentDidMount(){
-        const url = "https://dummyjson.com/products?limit=12";
-        // fetch(url).then(rs=>rs.json())
-        // .then(rs=>{
-        //    this.setState({products:rs.products});     
-        // })
-        // .catch(err=>{
-
-        // })
-        axios.get(url)
-        .then(rs=>{
-            this.setState({
-                products: rs.data.products
-            })
-        })
-        .catch(err=>{
-
-        })
+    async componentDidMount(){
+        const products = await getProduct(12);
+        this.setState({products:products});
     }
     render(){
         const products = this.state.products;
@@ -39,7 +25,7 @@ export default class ProductPage extends React.Component{
                     products.map((e,i)=>{
                         return (
                             <Col key={i} xs={3}>
-                                <ProductGrid image={e.thumbnail} title={e.title} text={e.description}/>
+                                <ProductGrid id={e.id} image={e.thumbnail} title={e.title} text={e.description}/>
                             </Col>
                         )
                     })
