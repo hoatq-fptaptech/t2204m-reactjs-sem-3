@@ -13,6 +13,9 @@ export default function NavLayout(props){
             <Nav.Item>
                 <NavLink to="/product" className="nav-link">Product</NavLink>
             </Nav.Item>
+            <Nav.Item>
+                <NavLink to="/cart" className="nav-link">Cart</NavLink>
+            </Nav.Item>
         </Nav>
     );
 }

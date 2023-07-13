@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = 'https://localhost:7260/';
+const BASE_URL = 'https://dummyjson.com/';
 const api = axios.create({
     baseURL: BASE_URL,
     // headers: {"Authorization":"Bearer ...."}
