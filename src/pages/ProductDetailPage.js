@@ -30,10 +30,19 @@ function ProductDetailPage(){
     },[product,count]); // did update cua product - count
     const {state,setState} = useContext(UserContext);// connect to   global 
     const addToCart = ()=>{
-        // console.log(state);
         const cart = state.cart;
-        product.buy_qty = 1;
-        cart.push(product);
+        let check = true;
+        cart.map(e=>{
+            if(e.id == product.id){
+                e.buy_qty = e.buy_qty +1;
+                check = false;
+            }
+            return e;
+        })
+        if(check){
+            product.buy_qty = 1;
+            cart.push(product);
+        }
         setState({...state,cart:cart});
         alert("Đã thêm vào giỏ hàng");
         // state.cart = cart;

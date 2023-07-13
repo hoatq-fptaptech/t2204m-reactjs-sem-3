@@ -25,7 +25,7 @@ export default class ProductPage extends React.Component{
                     products.map((e,i)=>{
                         return (
                             <Col key={i} xs={3}>
-                                <ProductGrid id={e.id} image={e.thumbnail} title={e.title} text={e.description}/>
+                                <ProductGrid product={e} />
                             </Col>
                         )
                     })
