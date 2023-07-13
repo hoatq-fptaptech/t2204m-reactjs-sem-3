@@ -1,4 +1,5 @@
 const STATE = {
-    cart:[]
+    cart:[],
+    favorites:[]
 };
 export default STATE;

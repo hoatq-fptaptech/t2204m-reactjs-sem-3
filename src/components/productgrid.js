@@ -2,6 +2,7 @@ import { Card,Button } from "react-bootstrap"
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../context/userContext";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function ProductGrid(props){
     const product = props.product;
     const {state,setState} = useContext(UserContext);// connect to   global 
@@ -37,6 +38,7 @@ export default function ProductGrid(props){
                     {product.description}
                 </Card.Text>
                 <Button onClick={addToCart} variant="primary">Add To Cart</Button>
+             
             </Card.Body>
         </Card>
     )
