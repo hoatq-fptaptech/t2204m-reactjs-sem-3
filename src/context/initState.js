@@ -1,5 +1,6 @@
 const STATE = {
     cart:[],
-    favorites:[]
+    favorites:[],
+    loading:false
 };
 export default STATE;

@@ -22,7 +22,9 @@ export default function ProductGrid(props){
         }
         // setState({...state,cart:cart});
         dispatch({type:"UPDATE_CART",payload:cart})
-        alert("Đã thêm vào giỏ hàng");
+        setTimeout(()=>{
+            dispatch({type:"HIDE_LOADING"});
+        },1000);
         // state.cart = cart;
         // setState(state);
     }

@@ -7,9 +7,12 @@ function ProductDetailPage(){
     const {id} = useParams("id");
     const [product,setProduct] = useState({});
     const [count,setCount] = useState(0);
+    const {state,dispatch} = useContext(UserContext);// connect to   global 
     const find = async ()=>{
+        dispatch({type:"SHOW_LOADING"});
         const p = await detailProduct(id);
         setProduct(p);
+        dispatch({type:"HIDE_LOADING"});
     }
 
     useEffect(()=>{
@@ -28,7 +31,7 @@ function ProductDetailPage(){
     useEffect(()=>{
         // console.log("Product - Count change");
     },[product,count]); // did update cua product - count
-    const {state,dispatch} = useContext(UserContext);// connect to   global 
+    
     const addToCart = ()=>{
         const cart = state.cart;
         let check = true;

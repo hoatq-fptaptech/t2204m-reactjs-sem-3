@@ -11,11 +11,13 @@ import { useReducer, useState } from 'react';
 import STATE from './context/initState';
 import { UserProvider } from './context/userContext';
 import reducer from './context/reducer';
+import Loading from './components/loading';
 
 function App() {
   const [state,dispatch] = useReducer(reducer,STATE);
   return (
     <UserProvider value={{state,dispatch}}>
+      <Loading display={state.loading} />
       <div className="App">
           <Container>
             <NavLayout/>
