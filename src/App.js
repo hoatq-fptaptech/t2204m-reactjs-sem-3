@@ -7,14 +7,15 @@ import CategoryPage from './pages/CategoryPage';
 import ProductPage from './pages/ProductPage';
 import ProductDetailPage from './pages/ProductDetailPage';
 import CartPage from './pages/CartPage';
-import { useState } from 'react';
+import { useReducer, useState } from 'react';
 import STATE from './context/initState';
 import { UserProvider } from './context/userContext';
+import reducer from './context/reducer';
 
 function App() {
-  const [state,setState] = useState(STATE);
+  const [state,dispatch] = useReducer(reducer,STATE);
   return (
-    <UserProvider value={{state,setState}}>
+    <UserProvider value={{state,dispatch}}>
       <div className="App">
           <Container>
             <NavLayout/>

@@ -5,7 +5,7 @@ import UserContext from "../context/userContext";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function ProductGrid(props){
     const product = props.product;
-    const {state,setState} = useContext(UserContext);// connect to   global 
+    const {state,dispatch} = useContext(UserContext);// connect to   global 
     const addToCart = ()=>{
         const cart = state.cart;
         let check = true;
@@ -20,7 +20,8 @@ export default function ProductGrid(props){
             product.buy_qty = 1;
             cart.push(product);
         }
-        setState({...state,cart:cart});
+        // setState({...state,cart:cart});
+        dispatch({type:"UPDATE_CART",payload:cart})
         alert("Đã thêm vào giỏ hàng");
         // state.cart = cart;
         // setState(state);

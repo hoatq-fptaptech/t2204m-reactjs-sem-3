@@ -3,8 +3,18 @@ import UserContext from "../context/userContext";
 import { Table } from "react-bootstrap";
 
 const CartPage = (props)=>{
-    const {state,setState} = useContext(UserContext);
+    const {state,dispatch} = useContext(UserContext);
     const cart = state.cart;
+    const remove = (p)=>{
+        let newCart = [];
+        cart.map(e=>{
+            if(e.id != p.id){
+                newCart.push(e);
+            }
+        });
+        // setState({state,cart:newCart});
+        dispatch({type:"UPDATE_CART",payload:newCart});
+    }
     return (
         <div>
             <h1>Cart</h1>
@@ -28,6 +38,7 @@ const CartPage = (props)=>{
                             <td>{e.title}</td>
                             <td>{e.price}</td>
                             <td>{e.buy_qty}</td>
+                            <td><button onClick={()=>remove(e)}>Remove</button></td>
                         </tr>
                       );       
                     })

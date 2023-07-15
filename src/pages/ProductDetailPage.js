@@ -28,7 +28,7 @@ function ProductDetailPage(){
     useEffect(()=>{
         // console.log("Product - Count change");
     },[product,count]); // did update cua product - count
-    const {state,setState} = useContext(UserContext);// connect to   global 
+    const {state,dispatch} = useContext(UserContext);// connect to   global 
     const addToCart = ()=>{
         const cart = state.cart;
         let check = true;
@@ -43,7 +43,8 @@ function ProductDetailPage(){
             product.buy_qty = 1;
             cart.push(product);
         }
-        setState({...state,cart:cart});
+        // setState({...state,cart:cart});
+        dispatch({type:"UPDATE_CART",payload:cart});
         alert("Đã thêm vào giỏ hàng");
         // state.cart = cart;
         // setState(state);
